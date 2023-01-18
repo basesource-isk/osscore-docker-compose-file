@@ -2,7 +2,7 @@ version: "3.4"
 
 services:
     web:
-      image: osscore/osscore:2.0
+      image: osscore/osscore:3.0-beta
       command: bash -c "python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
       volumes:
         - ./uploads:/code/uploads
@@ -14,7 +14,7 @@ services:
         - "6379:6379"
     celery:
       restart: always
-      image: osscore/osscore:2.0
+      image: osscore/osscore:3.0-beta
       volumes: 
         - ./uploads:/code/uploads
       command: celery -A OSSCore.celery worker --loglevel=INFO --pool=solo
